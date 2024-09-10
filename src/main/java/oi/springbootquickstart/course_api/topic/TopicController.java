@@ -1,6 +1,7 @@
 package oi.springbootquickstart.course_api.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,16 @@ public class TopicController {
          * topicService.getAllTopics()
          */
         return topicService.getAllTopics();
+    }
+
+    /**
+     * On Clip 18, we implemented another method using @RequestMapping and @PathVariable annotation.
+     * We also add a new method call getTopic in the TopicService.java Class and call it in the Return of this method
+     * @param id
+     * @return
+     */
+    @RequestMapping("/topics/{id}")
+    public Topic getTopic(@PathVariable String id){
+        return topicService.getTopic(id);
     }
 }

@@ -17,4 +17,9 @@ public class TopicService {
     public List<Topic> getAllTopics(){
         return topicsList;
     }
+
+    //This is a new method we created on Clip 18, that will take the id we provided in the Topic Controller using /topics/id
+    public Topic getTopic(String id){
+        return topicsList.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+    }
 }
