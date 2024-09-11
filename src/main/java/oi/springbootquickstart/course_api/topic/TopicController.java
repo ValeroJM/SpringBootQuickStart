@@ -1,9 +1,7 @@
 package oi.springbootquickstart.course_api.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,5 +41,16 @@ public class TopicController {
     @RequestMapping("/topics/{id}")
     public Topic getTopic(@PathVariable String id){
         return topicService.getTopic(id);
+    }
+
+    /**
+     * On Clip 19, we implemented another method but this time a Post Request where we are going to create a new topic
+     * We also will use @RequestBody annotation to send a Topic object and Spring will convert it into a Topic JSON
+     * We also used PostMan we send a Topic JSON object in the body of the request and add a Header with Key: Content-Type and Value: application/json so Postman will know that we are sending an object
+     */
+    //@PostMapping("/topics") //We can also use @PostMapping annotation - This is not part of Clip# 19
+    @RequestMapping(method= RequestMethod.POST, value = "/topics")
+    public void addTopic(@RequestBody Topic topic){
+        topicService.addTopic(topic);
     }
 }
