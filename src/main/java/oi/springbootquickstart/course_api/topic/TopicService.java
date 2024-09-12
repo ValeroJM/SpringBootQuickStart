@@ -29,4 +29,19 @@ public class TopicService {
     public void addTopic(Topic topic) {
         topicsList.add(topic);
     }
+
+    //Once the Put request was created in the Controller now we can set the update topic into the topicList List
+    public void updateTopic(String id, Topic topic) {
+        for (int i = 0; i < topicsList.size(); i++){
+            Topic t = topicsList.get(i);
+            if (t.getId().equals(id)){
+                topicsList.set(i, topic);
+                return;
+            }
+        }
+    }
+
+    public void deleteTopic(String id) {
+        topicsList.removeIf(t -> t.getId().equals(id));
+    }
 }

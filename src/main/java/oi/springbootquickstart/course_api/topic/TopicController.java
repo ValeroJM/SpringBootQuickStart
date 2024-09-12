@@ -53,4 +53,25 @@ public class TopicController {
     public void addTopic(@RequestBody Topic topic){
         topicService.addTopic(topic);
     }
+
+    /**
+     * On Clip 20, we implemented another method but this time a PUT and DELETE Request where we are going to update a new topic
+     * We also will use @RequestBody annotation to send a Topic object, Spring will convert it into a Topic JSON and also use @PathVariable to pass the JSON id
+     * We also used PostMan:
+     * - For PutMapping a Topic JSON object in the body of the request + the id of the JSON we want to replace.
+     * We had to add a Header with Key: Content-Type and Value: application/json so Postman will know that we are sending an object
+     * - For DeleteMapping we made a request with the id, we implemented a logic to find the JSON and delete it from the List
+     */
+
+    //@PutMapping("/topics/{id}") //We can also use @PutMapping annotation - This is not part of Clip# 20
+    @RequestMapping(method= RequestMethod.PUT, value = "/topics/{id}")
+    public void updateTopic(@RequestBody Topic topic, @PathVariable String id){
+        topicService.updateTopic(id, topic);
+    }
+
+    //@DeleteMapping("/topics/{id}") //We can also use @DeleteMapping annotation - This is not part of Clip# 20
+    @RequestMapping(method= RequestMethod.DELETE, value = "/topics/{id}")
+    public void deleteTopic(@PathVariable String id){
+        topicService.deleteTopic(id);
+    }
 }
