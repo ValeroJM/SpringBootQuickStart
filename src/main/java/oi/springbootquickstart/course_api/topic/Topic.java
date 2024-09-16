@@ -1,6 +1,12 @@
 package oi.springbootquickstart.course_api.topic;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity //With this annotation we are telling to JPA that this class is DBEntity and it will create a table with 3 columns: id, name and description -- Clip#28
 public class Topic {
+    @Id
     private String id;
     private String name;
     private String description;
