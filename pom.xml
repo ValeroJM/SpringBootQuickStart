@@ -56,6 +56,13 @@
 			<version>10.17.1.0</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!--I needed to add this new dependency that will use memory as storage and not as a real DB but it will act as it is a DB-->
+		<!--This dependency is not listed present in the Original course in the JPA section Clips#26-29-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.220</version>
+		</dependency>
 	</dependencies>
 
 	<build>
