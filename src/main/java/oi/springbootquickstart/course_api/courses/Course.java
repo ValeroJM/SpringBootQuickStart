@@ -3,6 +3,7 @@ package oi.springbootquickstart.course_api.courses;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import oi.springbootquickstart.course_api.topic.Topic;
 
 @Entity
@@ -11,6 +12,8 @@ public class Course {
     private String id;
     private String name;
     private String description;
+
+    @ManyToOne
     private Topic topic;
 
     public Course(){
